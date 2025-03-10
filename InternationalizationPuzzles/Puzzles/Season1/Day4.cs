@@ -7,7 +7,7 @@ namespace InternationalizationPuzzles.Puzzles.Season1;
 
 public sealed class Day4 : Puzzle<int>
 {
-    private List<Trip> _trips = [];
+    private readonly List<Trip> _trips = [];
 
     public override int Solve()
     {
@@ -21,6 +21,8 @@ public sealed class Day4 : Puzzle<int>
 
     public override void LoadInput(string fileInput)
     {
+        _trips.Clear();
+
         var input = fileInput
             .AsSpan()
             .Trim()
