@@ -1,4 +1,5 @@
 ﻿using Garyon.Objects;
+using System.Diagnostics;
 
 namespace InternationalizationPuzzles.Core;
 
@@ -12,10 +13,17 @@ public sealed class ConsolePuzzleRunner
         var puzzleIdentifier = IPuzzle.GetPuzzleDayIdentifier<T>()
             .WithTestCase(testCaseIdentifier);
         var puzzleIdentifierDisplay = FormatPuzzleIdentifier(puzzleIdentifier);
-        Console.WriteLine($"Running puzzle {puzzleIdentifierDisplay}");
+        Console.WriteLine($"Running puzzle {puzzleIdentifierDisplay}\n");
+
+        var timeStart = Stopwatch.GetTimestamp();
 
         var result = await _puzzleRunner.Run<T>(testCaseIdentifier);
-        Console.WriteLine($"Result: {result}");
+
+        var elapsedTime = Stopwatch.GetElapsedTime(timeStart);
+        Console.WriteLine($"""
+            Total time: {elapsedTime.TotalMilliseconds:N2} ms
+                Result: {result}
+            """);
     }
 
     private static string FormatPuzzleIdentifier(PuzzleIdentifier identifier)
