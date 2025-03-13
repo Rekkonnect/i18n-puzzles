@@ -29,9 +29,9 @@ public sealed class Day3 : Puzzle<int>
         _input = fileInput;
     }
 
-    private readonly ref struct Password(ReadOnlySpan<char> content)
+    private readonly ref struct Password(SpanString content)
     {
-        private readonly ReadOnlySpan<char> _content = content;
+        private readonly SpanString _content = content;
 
         public bool IsValid()
         {

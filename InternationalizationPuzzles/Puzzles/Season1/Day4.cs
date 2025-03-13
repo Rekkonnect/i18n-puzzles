@@ -49,8 +49,8 @@ public sealed class Day4 : Puzzle<int>
     }
 
     private static Trip ParseTrip(
-        ReadOnlySpan<char> departure,
-        ReadOnlySpan<char> arrival)
+        SpanString departure,
+        SpanString arrival)
     {
         var departureTime = ParseTripTime(departure);
         var arrivalTime = ParseTripTime(arrival);
@@ -58,7 +58,7 @@ public sealed class Day4 : Puzzle<int>
     }
 
     private static DateTimeOffset ParseTripTime(
-        ReadOnlySpan<char> line)
+        SpanString line)
     {
         const string dateFormat = "MMM dd, yyyy, HH:mm";
 

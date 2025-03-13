@@ -36,7 +36,7 @@ public sealed class Day2 : Puzzle<string>
         return time.UtcDateTime;
     }
 
-    private static DateTimeOffset ParseTime(ReadOnlySpan<char> line)
+    private static DateTimeOffset ParseTime(SpanString line)
     {
         return DateTimeOffset.Parse(line);
     }

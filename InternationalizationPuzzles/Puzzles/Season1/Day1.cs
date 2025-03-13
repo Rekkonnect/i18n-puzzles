@@ -29,9 +29,9 @@ public sealed class Day1 : Puzzle<int>
         _input = fileInput;
     }
 
-    private readonly ref struct Message(ReadOnlySpan<char> content)
+    private readonly ref struct Message(SpanString content)
     {
-        private readonly ReadOnlySpan<char> _content = content;
+        private readonly SpanString _content = content;
 
         public int TotalCost()
         {
@@ -70,7 +70,7 @@ public sealed class Day1 : Puzzle<int>
             return runes <= runeLimit;
         }
 
-        private static int RuneCount(ReadOnlySpan<char> content)
+        private static int RuneCount(SpanString content)
         {
             int count = 0;
             foreach (var rune in content.EnumerateRunes())

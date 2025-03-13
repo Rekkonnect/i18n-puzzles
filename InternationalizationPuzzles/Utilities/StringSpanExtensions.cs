@@ -26,7 +26,7 @@ public static class StringSpanExtensions
 
     public static bool ConsumeNext(
         this ref SpanLineEnumerator enumerator,
-        out ReadOnlySpan<char> line)
+        out SpanString line)
     {
         var hasNext = enumerator.MoveNext();
         line = default;
@@ -37,7 +37,7 @@ public static class StringSpanExtensions
         return hasNext;
     }
 
-    public static Rune RuneAt(this ReadOnlySpan<char> span, int index)
+    public static Rune RuneAt(this SpanString span, int index)
     {
         var runeEnumerator = span.EnumerateRunes();
         int i = 0;
@@ -54,7 +54,7 @@ public static class StringSpanExtensions
             "The rune index falls out of the range of the provided span.");
     }
 
-    public static int RuneCount(this ReadOnlySpan<char> span)
+    public static int RuneCount(this SpanString span)
     {
         int count = 0;
         foreach (var rune in span.EnumerateRunes())

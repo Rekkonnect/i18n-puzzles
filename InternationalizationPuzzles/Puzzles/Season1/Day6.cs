@@ -71,7 +71,7 @@ public sealed class Day6 : Puzzle<int>
         return has3.ToInt32() + has5.ToInt32();
     }
 
-    private static Word LoadWord(int lineNumber, ReadOnlySpan<char> line)
+    private static Word LoadWord(int lineNumber, SpanString line)
     {
         int steps = BadEncodingStepsForIndex(lineNumber);
         var decodedLine = line.ToString();
@@ -83,7 +83,7 @@ public sealed class Day6 : Puzzle<int>
         return new(lineNumber, decodedLine);
     }
 
-    private static CrosswordInstance ParseCrosswordLine(ReadOnlySpan<char> line)
+    private static CrosswordInstance ParseCrosswordLine(SpanString line)
     {
         line = line.Trim();
         var charIndex = line.IndexOfAnyExcept('.');
