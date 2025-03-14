@@ -23,7 +23,20 @@ public sealed class ConsolePuzzleRunner
         Console.WriteLine($"""
             Total time: {elapsedTime.TotalMilliseconds:N2} ms
                 Result: {result}
+
             """);
+    }
+
+    public async Task DiscoverAllRun<T>()
+        where T : class, IPuzzle, new()
+    {
+        var identifiers = _puzzleRunner.DiscoverAllIdentifiers<T>();
+
+        foreach (var identifier in identifiers)
+        {
+            await Run<T>(identifier);
+            Console.WriteLine();
+        }
     }
 
     private static string FormatPuzzleIdentifier(PuzzleIdentifier identifier)
