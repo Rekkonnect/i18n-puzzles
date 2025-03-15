@@ -22,10 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ExpectedOutputs\README.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ExpectedOutputs\Season1.exout">
+    <None Update="ExpectedOutputs\*.exout">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -1,0 +1,43 @@
+﻿{
+  "name": "i18n-puzzles Expected Output",
+  "scopeName": "source.i18nexout",
+  "fileTypes": [
+    "exout"
+  ],
+
+  "patterns": [
+    {
+      "comment": "Season definition",
+      "match": "^(Season)\\s+(.*)$",
+      "captures": {
+        "1": {
+          "name": "keyword.control.i18nexout"
+        },
+        "2": {
+          "name": "constant.numeric.integer.i18nexout"
+        }
+      }
+    },
+    {
+      "comment": "Output definition",
+      "match": "^(\\d*)(T\\d*)?\\:\\s*(.*)\\s*$",
+      "captures": {
+        "1": {
+          "name": "support.class.i18nexout"
+        },
+        "2": {
+          "name": "support.type.i18nexout"
+        },
+        "3": {
+          "name": "string.unquoted.i18nexout"
+        }
+      }
+    },
+    {
+      "comment": "Misc text",
+      "begin": "^[^0-9\\n].*",
+      "end": "$",
+      "name": "comment.block.i18nexout"
+    }
+  ]
+}
