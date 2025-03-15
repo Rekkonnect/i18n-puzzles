@@ -15,6 +15,7 @@ Quoting from an email:
 
 The inputs are structured under seasons, and the name for each input file depicts its day and the test case identifier. If it's a test case input, the file name is suffixed with "Tn".
 
-Examples:
+### Examples
+
 - `Season1/1T1.txt`: Season 1 - Day 1 (Test Case 1)
 - `Season1/2.txt`: Season 1 - Day 2 (Real Input)

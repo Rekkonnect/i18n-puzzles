@@ -1,5 +1,6 @@
 ﻿using Garyon.Extensions;
 using InternationalizationPuzzles.Core;
+using InternationalizationPuzzles.Utilities;
 using System.Collections.Immutable;
 
 namespace InternationalizationPuzzles.Puzzles.Season1;
@@ -35,21 +36,17 @@ public sealed class Day7 : Puzzle<int>
 
     public override void LoadInput(string fileInput)
     {
-        _records = fileInput
-            .AsSpan()
-            .Trim()
-            .SelectLines(ParseRecord)
-            ;
+        _records = fileInput.TrimSelectLines(ParseRecord);
     }
 
     private static AuditRecord ParseRecord(SpanString line)
     {
-        line.SplitOnce('\t', out var timestampString, out var minutesColumns);
-        minutesColumns.SplitOnce('\t', out var correctMinutesString, out var wrongMinutesString);
+        line.SplitOnceTrim('\t', out var timestampString, out var minutesColumns);
+        minutesColumns.SplitOnceTrim('\t', out var correctMinutesString, out var wrongMinutesString);
 
-        var timestamp = DateTimeOffset.Parse(timestampString.Trim());
-        var correctMinutes = int.Parse(correctMinutesString.Trim());
-        var wrongMinutes = int.Parse(wrongMinutesString.Trim());
+        var timestamp = DateTimeOffset.Parse(timestampString);
+        var correctMinutes = int.Parse(correctMinutesString);
+        var wrongMinutes = int.Parse(wrongMinutesString);
         return new(timestamp, correctMinutes, wrongMinutes);
     }
 

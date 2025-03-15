@@ -63,11 +63,9 @@ public sealed class Day4 : Puzzle<int>
         const string dateFormat = "MMM dd, yyyy, HH:mm";
 
         var details = line.SliceAfter(':').Trim();
-        details.SplitOnce(' ', out var timeZoneId, out var timeString);
-        timeString = timeString.Trim();
+        details.SplitOnceTrim(' ', out var timeZoneId, out var timeString);
         var time = DateTime.ParseExact(timeString, dateFormat, CultureInfo.InvariantCulture);
 
-        timeZoneId = timeZoneId.Trim();
         var info = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId.ToString());
         var offset = info.GetUtcOffset(time);
         return new DateTimeOffset(time, offset);

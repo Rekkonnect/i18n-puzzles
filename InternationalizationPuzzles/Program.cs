@@ -4,4 +4,4 @@ using InternationalizationPuzzles.Puzzles.Season1;
 
 var runner = Singleton<ConsolePuzzleRunner>.Instance;
 
-await runner.DiscoverAllRun<Day8>();
+await runner.DiscoverAllValidate<Day9>();

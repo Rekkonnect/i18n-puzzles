@@ -1,17 +1,22 @@
-﻿using Garyon.Objects;
+﻿using Garyon.Functions;
+using Garyon.Objects;
+using Spectre.Console;
 using System.Diagnostics;
 
 namespace InternationalizationPuzzles.Core;
 
 public sealed class ConsolePuzzleRunner
 {
+    private readonly PuzzleDiscoverer _puzzleDiscoverer = Singleton<PuzzleDiscoverer>.Instance;
     private readonly PuzzleRunner _puzzleRunner = Singleton<PuzzleRunner>.Instance;
+    private readonly PuzzleValidator _puzzleValidator = Singleton<PuzzleValidator>.Instance;
 
     public async Task Run<T>(TestCaseIdentifier testCaseIdentifier)
         where T : class, IPuzzle, new()
     {
         var puzzleIdentifier = IPuzzle.GetPuzzleDayIdentifier<T>()
             .WithTestCase(testCaseIdentifier);
+
         var puzzleIdentifierDisplay = FormatPuzzleIdentifier(puzzleIdentifier);
         Console.WriteLine($"Running puzzle {puzzleIdentifierDisplay}\n");
 
@@ -22,15 +27,77 @@ public sealed class ConsolePuzzleRunner
         var elapsedTime = Stopwatch.GetElapsedTime(timeStart);
         Console.WriteLine($"""
             Total time: {elapsedTime.TotalMilliseconds:N2} ms
-                Result: {result}
+                Result: {result.Result}
 
             """);
+    }
+
+    public async Task Validate<T>(TestCaseIdentifier testCaseIdentifier)
+        where T : class, IPuzzle, new()
+    {
+        var puzzleIdentifier = IPuzzle.GetPuzzleDayIdentifier<T>()
+            .WithTestCase(testCaseIdentifier);
+
+        var puzzleIdentifierDisplay = FormatPuzzleIdentifier(puzzleIdentifier);
+        Console.WriteLine($"Validating puzzle {puzzleIdentifierDisplay}\n");
+
+        var timeStart = Stopwatch.GetTimestamp();
+
+        var result = await _puzzleValidator.Validate<T>(testCaseIdentifier);
+
+        var elapsedTime = Stopwatch.GetElapsedTime(timeStart);
+        Console.WriteLine($"""
+            Total time: {elapsedTime.TotalMilliseconds:N2} ms
+                Result: {result.Output}
+
+            """);
+
+        PrintValidationResult(result);
+    }
+
+    private void PrintValidationResult(PuzzleValidationResult result)
+    {
+        switch (result.ValidationType)
+        {
+            case PuzzleValidationResultType.NoExpectedResultEntry:
+                ConsoleUtilities.WriteLineWithColor(
+                    "The expected results file did not contain this entry.",
+                    ConsoleColor.Magenta);
+                break;
+
+            case PuzzleValidationResultType.UnknownExpectedResult:
+                ConsoleUtilities.WriteLineWithColor(
+                    "The expected results file contained this puzzle entry, but had no expected result.",
+                    ConsoleColor.Magenta);
+                break;
+
+            case PuzzleValidationResultType.Mismatch:
+                AnsiConsole.MarkupLine(
+                    $$"""
+                    [red]The calculated result was [/][cyan]{{result.Output}}[/][red], but expected [/][cyan]{{result.Expected!.Output}}[/]
+                    """);
+                break;
+
+            case PuzzleValidationResultType.StringEqual:
+                AnsiConsole.MarkupLine(
+                    """
+                    [green]The puzzle's stringified result matched the expected![/]
+                    [yellow]Comparing the actual objects with Equals() returned false.[/]
+                    """);
+                break;
+
+            case PuzzleValidationResultType.TotalEqual:
+                ConsoleUtilities.WriteLineWithColor(
+                    "The puzzle's result matched the expected!",
+                    ConsoleColor.Green);
+                break;
+        }
     }
 
     public async Task DiscoverAllRun<T>()
         where T : class, IPuzzle, new()
     {
-        var identifiers = _puzzleRunner.DiscoverAllIdentifiers<T>();
+        var identifiers = _puzzleDiscoverer.DiscoverAllIdentifiers<T>();
 
         foreach (var identifier in identifiers)
         {
@@ -38,6 +105,20 @@ public sealed class ConsolePuzzleRunner
             Console.WriteLine();
         }
     }
+
+    public async Task DiscoverAllValidate<T>()
+        where T : class, IPuzzle, new()
+    {
+        var identifiers = _puzzleDiscoverer.DiscoverAllIdentifiers<T>();
+
+        foreach (var identifier in identifiers)
+        {
+            await Validate<T>(identifier);
+            Console.WriteLine();
+        }
+    }
+
+    // TODO: Implement running today's problem
 
     private static string FormatPuzzleIdentifier(PuzzleIdentifier identifier)
     {
