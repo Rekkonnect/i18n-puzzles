@@ -50,7 +50,7 @@ public sealed class Day9 : Puzzle<Day9.ResultNames>
             }
         }
 
-        var names = new HashSet<UmbraString>();
+        var names = ImmutableArray.CreateBuilder<UmbraString>(profiles.Count);
 
         foreach (var entry in _input)
         {
@@ -79,7 +79,7 @@ public sealed class Day9 : Puzzle<Day9.ResultNames>
             }
         }
 
-        return new(names.ToImmutableArray());
+        return new(names.ToImmutable());
 
         int CountSolvedProfiles()
         {
@@ -287,7 +287,6 @@ public sealed class Day9 : Puzzle<Day9.ResultNames>
         private void ReduceNotationParts()
         {
             // First remove the unclaimed notations from parts
-            // 
             PassUnclaimedComponentsFromOtherParts();
             PassIsolatedComponents();
         }
