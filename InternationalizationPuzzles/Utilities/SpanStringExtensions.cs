@@ -109,4 +109,12 @@ public static class SpanStringExtensions
     {
         return span.Trim().SelectLines(selector);
     }
+
+    public static (string left, string right) SplitOnceToStrings(
+        this SpanString input,
+        char delimiter)
+    {
+        input.SplitOnce(delimiter, out var left, out var right);
+        return (left.ToString(), right.ToString());
+    }
 }
