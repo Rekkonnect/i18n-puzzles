@@ -20,7 +20,7 @@
     },
     {
       "comment": "Output definition",
-      "match": "^(\\d*)(T\\d*)?\\:\\s*(.*)\\s*$",
+      "match": "^(\\d+)(T\\d+)?\\:\\s*(.*)\\s*$",
       "captures": {
         "1": {
           "name": "support.class.i18nexout"
