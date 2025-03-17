@@ -1,5 +1,4 @@
-﻿using Garyon.Extensions;
-using InternationalizationPuzzles.Core;
+﻿using InternationalizationPuzzles.Core;
 using InternationalizationPuzzles.Utilities;
 using System.Collections.Immutable;
 
@@ -105,7 +104,4 @@ public sealed class Day7 : Puzzle<int>
             return offset == time.Offset;
         }
     }
-
-    private readonly record struct CrosswordInstance(
-        int WordLength, int CharIndex, char KnownChar);
 }

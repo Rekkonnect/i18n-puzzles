@@ -17,6 +17,6 @@ using InternationalizationPuzzles.Puzzles.Season1;
 
 var runner = Singleton<ConsolePuzzleRunner>.Instance;
 
-await runner.DiscoverAllValidate<Day10>();
+await runner.DiscoverAllValidate<Day11>();
 
 #endif
