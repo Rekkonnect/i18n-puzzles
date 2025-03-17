@@ -1,4 +1,6 @@
-﻿namespace InternationalizationPuzzles.Core;
+﻿using System.Diagnostics;
+
+namespace InternationalizationPuzzles.Core;
 
 public sealed class PuzzleRunner
 {
@@ -16,9 +18,14 @@ public sealed class PuzzleRunner
         var fileName = DetermineFileNameForPuzzle(identifier);
         var input = await File.ReadAllTextAsync(fileName);
 
+        var timeStart = Stopwatch.GetTimestamp();
+
         var puzzle = new T();
         puzzle.LoadInput(input);
         var result = puzzle.Solve();
-        return new(identifier, result);
+
+        var executionTime = Stopwatch.GetElapsedTime(timeStart);
+
+        return new(identifier, result, executionTime);
     }
 }

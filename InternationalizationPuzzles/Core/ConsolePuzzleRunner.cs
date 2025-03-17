@@ -2,7 +2,6 @@
 using Garyon.Objects;
 using InternationalizationPuzzles.Core.Event;
 using Spectre.Console;
-using System.Diagnostics;
 
 namespace InternationalizationPuzzles.Core;
 
@@ -34,18 +33,10 @@ public sealed class ConsolePuzzleRunner
             .WithTestCase(testCaseIdentifier);
 
         var puzzleIdentifierDisplay = FormatPuzzleIdentifier(puzzleIdentifier);
-        Console.WriteLine($"Running puzzle {puzzleIdentifierDisplay}\n");
-
-        var timeStart = Stopwatch.GetTimestamp();
+        AnsiConsole.MarkupLine($"Running puzzle {puzzleIdentifierDisplay}\n");
 
         var result = await _puzzleRunner.Run<T>(testCaseIdentifier);
-
-        var elapsedTime = Stopwatch.GetElapsedTime(timeStart);
-        Console.WriteLine($"""
-            Total time: {elapsedTime.TotalMilliseconds:N2} ms
-                Result: {result.Result}
-
-            """);
+        WriteRunResult(result);
     }
 
     public async Task Validate<T>(TestCaseIdentifier testCaseIdentifier)
@@ -55,20 +46,34 @@ public sealed class ConsolePuzzleRunner
             .WithTestCase(testCaseIdentifier);
 
         var puzzleIdentifierDisplay = FormatPuzzleIdentifier(puzzleIdentifier);
-        Console.WriteLine($"Validating puzzle {puzzleIdentifierDisplay}\n");
-
-        var timeStart = Stopwatch.GetTimestamp();
+        AnsiConsole.MarkupLine($"Validating puzzle {puzzleIdentifierDisplay}\n");
 
         var result = await _puzzleValidator.Validate<T>(testCaseIdentifier);
 
-        var elapsedTime = Stopwatch.GetElapsedTime(timeStart);
-        Console.WriteLine($"""
-            Total time: {elapsedTime.TotalMilliseconds:N2} ms
-                Result: {result.Output}
+        WriteRunResult(result.RunResult);
+        PrintValidationResult(result);
+    }
+
+    private static void WriteRunResult(PuzzleRunResult result)
+    {
+        AnsiConsole.MarkupLine($"""
+                Total time   {PrintExecutionTime(result.ExecutionTime)}
+                    Result   [cyan]{result.Result}[/]
 
             """);
+    }
 
-        PrintValidationResult(result);
+    private static string PrintExecutionTime(TimeSpan time)
+    {
+        if (time.Seconds > 1)
+        {
+            return $"[red]{time.TotalSeconds:N2} s[/]";
+        }
+        if (time.Milliseconds > 10)
+        {
+            return $"[green]{time.TotalMilliseconds:N2} ms[/]";
+        }
+        return $"[blue]{time.TotalMicroseconds:N2} us[/]";
     }
 
     private void PrintValidationResult(PuzzleValidationResult result)
@@ -235,16 +240,16 @@ public sealed class ConsolePuzzleRunner
 
     private static string FormatPuzzleDay(PuzzleDayIdentifier identifier)
     {
-        return $"Season {identifier.Season} - Day {identifier.Day:00}";
+        return $"[teal]Season[/] [cyan]{identifier.Season}[/] - [teal]Day[/] [cyan]{identifier.Day:00}[/]";
     }
 
     private static string FormatTestCase(TestCaseIdentifier identifier)
     {
         if (identifier.IsTestCase)
         {
-            return $"Test Case {identifier.TestCase}";
+            return $"[olive]Test Case[/] [yellow]{identifier.TestCase}[/]";
         }
 
-        return "Real Input";
+        return "[green]Real Input[/]";
     }
 }

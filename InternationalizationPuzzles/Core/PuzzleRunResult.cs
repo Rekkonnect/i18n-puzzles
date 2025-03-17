@@ -2,4 +2,5 @@
 
 public sealed record PuzzleRunResult(
     PuzzleIdentifier Identifier,
-    object Result);
+    object Result,
+    TimeSpan ExecutionTime);

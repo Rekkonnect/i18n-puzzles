@@ -19,17 +19,17 @@ public sealed class PuzzleValidator
     {
         _outputCacheLazy.Start();
 
-        var result = await Singleton<PuzzleRunner>.Instance
+        var runResult = await Singleton<PuzzleRunner>.Instance
             .Run<T>(testCaseIdentifier);
 
         var cache = await _outputCacheLazy;
-        var expectedOutput = cache.OutputFor(result.Identifier);
+        var expectedOutput = cache.OutputFor(runResult.Identifier);
 
-        var runResult = result.Result;
-        var validationResultType = GetValidationResultType(runResult, expectedOutput);
+        var output = runResult.Result;
+        var validationResultType = GetValidationResultType(output, expectedOutput);
         return new PuzzleValidationResult(
-            runResult,
             expectedOutput,
+            runResult,
             validationResultType);
     }
 

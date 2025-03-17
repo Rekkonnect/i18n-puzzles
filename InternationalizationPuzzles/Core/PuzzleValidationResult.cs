@@ -1,6 +1,9 @@
 ﻿namespace InternationalizationPuzzles.Core;
 
 public sealed record PuzzleValidationResult(
-    object Output,
     PuzzleOutput? Expected,
-    PuzzleValidationResultType ValidationType);
+    PuzzleRunResult RunResult,
+    PuzzleValidationResultType ValidationType)
+{
+    public object Output => RunResult.Result;
+}
