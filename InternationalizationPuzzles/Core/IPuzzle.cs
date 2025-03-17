@@ -1,5 +1,6 @@
 ﻿using InterpolatedParsing;
 using Garyon.Extensions;
+using Garyon.Reflection;
 
 namespace InternationalizationPuzzles.Core;
 
@@ -20,6 +21,19 @@ public interface IPuzzle
 
     public abstract object Solve();
     public abstract void LoadInput(string fileInput);
+
+    public static PuzzleDayIdentifier GetPuzzleDayIdentifier(Type type)
+    {
+        if (!type.Inherits<IPuzzle>())
+        {
+            throw new ArgumentException("The type must implement IPuzzle");
+        }
+
+        return InferPuzzleDay(type)
+            ?? type.GetProperty(nameof(PuzzleDayIdentifier))!.GetValue(null)
+                as PuzzleDayIdentifier?
+            ?? default;
+    }
 
     public static PuzzleDayIdentifier GetPuzzleDayIdentifier<T>()
         where T : IPuzzle

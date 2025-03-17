@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 
-namespace InternationalizationPuzzles.Puzzles.Season1;
+namespace InternationalizationPuzzles.Utilities.Components;
+
+// TODO: Add tests for this
 
 /// <summary>
 /// Provides an enumerator over an enumerable, which stores the calculated
