@@ -1,66 +1,36 @@
-﻿using System.Text;
-
-namespace InternationalizationPuzzles;
+﻿namespace InternationalizationPuzzles;
 
 internal static class Playground
 {
     public static void Run()
     {
-        var loginAttempt = "XÑ0i7ÈÌ"u8;
-        var originalPassword = "XÑ0i7ÈÌ"u8;
+        const string ad = "ad";
+        const string ae = "æ";
+        const string af = "af";
 
-        WriteStringVariants(loginAttempt);
-        WriteStringVariants(originalPassword);
+        const string ok = "Ök";
+        const string ol = "Øl";
+        const string om = "Öm";
 
-        static void WriteStringVariants(ByteROS bytes)
+        WriteComparisonsForStrings(ae, af);
+        WriteComparisonsForStrings(ad, ae);
+        WriteComparisonsForStrings(ad, af);
+
+        WriteComparisonsForStrings(ok, ol);
+        WriteComparisonsForStrings(om, ol);
+
+        void WriteComparisonsForStrings(string a, string b)
         {
-            var inputString = Encoding.UTF8.GetString(bytes);
-            Console.WriteLine($"Calculating string variants for input string: {inputString}");
-            var inputBytesString = WriteStringBytes(bytes);
-            Console.WriteLine($"Input string bytes:\t{inputBytesString}");
-            WriteStringNormalization(inputString, NormalizationForm.FormKC);
-            WriteStringNormalization(inputString, NormalizationForm.FormC);
-            WriteStringNormalization(inputString, NormalizationForm.FormKD);
-            WriteStringNormalization(inputString, NormalizationForm.FormD);
+            WriteComparison(a, b, StringComparison.InvariantCultureIgnoreCase);
+            WriteComparison(a, b, StringComparison.OrdinalIgnoreCase);
+            WriteComparison(a, b, StringComparison.CurrentCultureIgnoreCase);
             Console.WriteLine();
         }
 
-        static void WriteStringNormalization(string s, NormalizationForm form)
+        void WriteComparison(string a, string b, StringComparison comparison)
         {
-
-            var normalized = s.Normalize(form);
-            var bytes = Encoding.UTF8.GetBytes(normalized);
-            var byteString = WriteStringBytes(bytes);
-            Console.WriteLine($"Normalized with {form}:\t{byteString}");
-        }
-
-        static string WriteStringBytes(ByteROS bytes)
-        {
-            var stringBuilder = new StringBuilder();
-
-            stringBuilder.Append('[');
-
-            bool hadFirst = false;
-            foreach (var @byte in bytes)
-            {
-                if (hadFirst)
-                {
-                    stringBuilder.Append(", ");
-                }
-
-                hadFirst = true;
-                WriteByte(@byte, stringBuilder);
-            }
-
-            stringBuilder.Append(']');
-
-            return stringBuilder.ToString();
-        }
-
-        static void WriteByte(byte b, StringBuilder builder)
-        {
-            builder.Append("0x");
-            builder.Append(b.ToString("X2"));
+            var result = string.Compare(a, b, comparison);
+            Console.WriteLine($"{a} against {b} with {comparison} = {result}");
         }
     }
 }

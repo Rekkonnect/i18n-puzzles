@@ -17,6 +17,7 @@
     <PackageReference Include="Rekkon.UmbraString" Version="0.1.0" />
     <PackageReference Include="Spectre.Console" Version="0.49.1" />
     <PackageReference Include="U8String" Version="0.16.0-alpha" />
+    <PackageReference Include="Unidecode.NET" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
