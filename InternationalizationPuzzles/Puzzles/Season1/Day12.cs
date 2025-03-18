@@ -7,22 +7,39 @@ using Unidecode.NET;
 
 namespace InternationalizationPuzzles.Puzzles.Season1;
 
-// Works for the test input but not for the real input; must fix
-
 public sealed class Day12 : Puzzle<long>
 {
     private PhoneBook _input = new([]);
 
     public override long Solve()
     {
-        var english = _input.GetSortedBy<EnglishLastNameComparer>();
-        var swedish = _input.GetSortedBy<SwedishLastNameComparer>();
-        var dutch = _input.GetSortedBy<DutchLastNameComparer>();
+        var english = CreateSortedBook<EnglishLastNameComparer>();
+        var swedish = CreateSortedBook<SwedishLastNameComparer>();
+        var dutch = CreateSortedBook<DutchLastNameComparer>();
         return (long)english.Middle.PhoneNumber
             * swedish.Middle.PhoneNumber
             * dutch.Middle.PhoneNumber
             ;
     }
+
+    private PhoneBook CreateSortedBook<TComparer>()
+        where TComparer : IComparer<StringSlice>, new()
+    {
+        var book = _input.GetSortedBy<TComparer>();
+#if DEBUG
+        DebugSortedBook(book);
+#endif
+        return book;
+    }
+
+#if DEBUG
+    private static void DebugSortedBook(PhoneBook phoneBook)
+    {
+        var lines = string.Join(Environment.NewLine, phoneBook.Records);
+        Console.WriteLine(lines);
+        Console.WriteLine();
+    }
+#endif
 
     public override void LoadInput(string fileInput)
     {
@@ -47,15 +64,15 @@ public sealed class Day12 : Puzzle<long>
 
     private readonly struct PhoneBook(ImmutableArray<PhoneBookRecord> records)
     {
-        private readonly ImmutableArray<PhoneBookRecord> _records = records;
+        public readonly ImmutableArray<PhoneBookRecord> Records = records;
 
-        public PhoneBookRecord Middle => _records[_records.Length / 2];
+        public PhoneBookRecord Middle => Records[Records.Length / 2];
 
         public PhoneBook GetSortedBy<TComparer>()
             where TComparer : IComparer<StringSlice>, new()
         {
             var comparer = Singleton<PhoneBookRecordComparer<TComparer>>.Instance;
-            return new(_records.Sort(comparer));
+            return new(Records.Sort(comparer));
         }
     }
 
@@ -65,6 +82,11 @@ public sealed class Day12 : Puzzle<long>
         public int CompareTo(PhoneBookRecord other, IComparer<StringSlice> lastNameComparer)
         {
             return LastName.CompareTo(other.LastName, lastNameComparer);
+        }
+
+        public override string ToString()
+        {
+            return $"{LastName}, {FirstName}: 0{PhoneNumber}";
         }
     }
 
@@ -157,8 +179,7 @@ public sealed class Day12 : Puzzle<long>
 
         private static void Normalize(scoped Span<char> span)
         {
-            span.Replace('Ø', 'O');
-            span.Replace('ø', 'o');
+            UnidecodingHelpers.Replace(span);
         }
     }
 
@@ -218,25 +239,6 @@ public sealed class Day12 : Puzzle<long>
                 _ => AlphabetIndex(UnidecodingHelpers.GetDecodedLatin(c)),
             };
         }
-
-        private static class UnidecodingHelpers
-        {
-            private static readonly MemoizedFunctionDictionary<char, char> _table = new(DecodeLatin);
-
-            public static char GetDecodedLatin(char c)
-            {
-                return _table.Get(c);
-            }
-
-            private static char DecodeLatin(char c)
-            {
-                var decoded = Unidecoder.Unidecode(c);
-                if (decoded is "")
-                    return c;
-
-                return decoded[0];
-            }
-        }
     }
 
     private sealed class DutchLastNameComparer
@@ -272,6 +274,33 @@ public sealed class Day12 : Puzzle<long>
         int IComparer<PhoneBookRecord>.Compare(PhoneBookRecord x, PhoneBookRecord y)
         {
             return x.LastName.CompareTo(y.LastName, UnderlyingComparer);
+        }
+    }
+
+    private static class UnidecodingHelpers
+    {
+        private static readonly MemoizedFunctionDictionary<char, char> _table = new(DecodeLatin);
+
+        public static void Replace(scoped Span<char> span)
+        {
+            for (int i = 0; i < span.Length; i++)
+            {
+                span[i] = GetDecodedLatin(span[i]);
+            }
+        }
+
+        public static char GetDecodedLatin(char c)
+        {
+            return _table.Get(c);
+        }
+
+        private static char DecodeLatin(char c)
+        {
+            var decoded = Unidecoder.Unidecode(c);
+            if (decoded is "")
+                return c;
+
+            return decoded[0];
         }
     }
 }
