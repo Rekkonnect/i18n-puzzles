@@ -6,10 +6,11 @@ This directory contains expected outputs for the example inputs provided in the 
 
 The inputs provided in this repository are bound to the original creator's license.
 
-Quoting from an email:
-> **Q: Can the puzzle inputs be shared, e.g. in a public git repository?**
+Quoting from the [Terms of Use](https://i18n-puzzles.com/about/):
 
->I'm making the puzzle contents available under the Creative Commons CC-BY license. This means that sharing the puzzle inputs is allowed, provided you credit the source.
+>The puzzles, including input files, are licensed under the Creative Commons Atribution license [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You may copy any part of this site, as long as you attribute Matijn van Iersel and i18n-puzzles.com.
+
+
 
 ## Structure
 
