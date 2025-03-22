@@ -22,6 +22,13 @@ public interface IPuzzle
     public abstract object Solve();
     public abstract void LoadInput(string fileInput);
 
+    public virtual async Task LoadInputFromStream(Stream stream)
+    {
+        var reader = new StreamReader(stream);
+        var fileInput = await reader.ReadToEndAsync();
+        LoadInput(fileInput);
+    }
+
     public static PuzzleDayIdentifier GetPuzzleDayIdentifier(Type type)
     {
         if (!type.Inherits<IPuzzle>())

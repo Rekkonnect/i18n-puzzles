@@ -16,16 +16,19 @@ public sealed class PuzzleRunner
             .WithTestCase(testCaseIdentifier);
 
         var fileName = DetermineFileNameForPuzzle(identifier);
-        var input = await File.ReadAllTextAsync(fileName);
-
-        var timeStart = Stopwatch.GetTimestamp();
 
         var puzzle = new T();
-        puzzle.LoadInput(input);
+
+        var inputStart = Stopwatch.GetTimestamp();
+        var stream = File.OpenRead(fileName);
+        await puzzle.LoadInputFromStream(stream);
+        // TODO: Use the input time
+        var inputTime = Stopwatch.GetElapsedTime(inputStart);
+
+        var solveStart = Stopwatch.GetTimestamp();
         var result = puzzle.Solve();
+        var solveTime = Stopwatch.GetElapsedTime(solveStart);
 
-        var executionTime = Stopwatch.GetElapsedTime(timeStart);
-
-        return new(identifier, result, executionTime);
+        return new(identifier, result, solveTime);
     }
 }
