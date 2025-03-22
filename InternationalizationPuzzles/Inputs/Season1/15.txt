@@ -1,0 +1,106 @@
+﻿TOPlap office in Melbourne	Australia/Melbourne	26 December 2022;15 April 2022;18 April 2022;26 January 2022
+TOPlap office in Delft	Europe/Amsterdam	6 June 2022;26 December 2022;26 May 2022;27 April 2022
+TOPlap office in Manchester	Europe/London	26 December 2022;15 April 2022;3 June 2022
+TOPlap office in São Paulo	America/Sao_Paulo	28 February 2022;26 December 2022;15 April 2022;1 May 2022
+TOPlap office in Orlando	America/New_York	17 January 2022;26 December 2022;4 July 2022;5 September 2022
+
+Marketing Industries of Greenland	America/Danmarkshavn	18 April 2022;26 May 2022
+I&E	Africa/Tunis	18 April 2022;28 February 2022
+Africa Airlines	Africa/Johannesburg	7 March 2022;15 April 2022
+Investment Bank of Africa	Africa/Casablanca	28 February 2022;26 December 2022
+K&B	Europe/Prague	7 March 2022;6 January 2022
+Champlin & O'Kon	Europe/Volgograd	7 March 2022;15 April 2022
+Logistics of Adak	America/Adak	7 March 2022;18 April 2022;26 December 2022
+America Press	America/Yakutat	5 September 2022;6 January 2022
+PRK Financial Institute	America/Araguaina	7 March 2022;3 January 2022
+Crist Times	America/Asuncion	6 June 2022;26 December 2022
+America Bank	America/Monterrey	26 December 2022;7 March 2022
+Yost & Nolan	America/Guyana	15 April 2022;26 December 2022;3 May 2022
+ILA Stock Exchange	America/Tegucigalpa	3 January 2022;1 November 2022
+NGG Stock Exchange	America/Rio_Branco	3 October 2022;3 May 2022
+Transport Technologies of Boise	America/Boise	3 October 2022;26 December 2022
+Zboncak, Weimann & Braun	America/Menominee	28 February 2022;1 November 2022;4 July 2022
+Entertainment of Mexico	America/Chihuahua	28 February 2022;18 April 2022;3 May 2022
+Buckridge Press	America/Ciudad_Juarez	1 November 2022;6 January 2022
+U&E	America/Phoenix	15 April 2022;28 February 2022
+Fadel Press	America/Iqaluit	1 November 2022;26 December 2022
+Capital Management of Canada	America/Moncton	3 May 2022;6 June 2022
+I&V	America/Tijuana	15 April 2022;6 January 2022;6 June 2022
+Kuvalis Medical	America/Mazatlan	6 June 2022;28 February 2022
+Hammes & Lakin	America/Miquelon	1 November 2022;3 October 2022
+Jones & King	Atlantic/South_Georgia	1 November 2022;26 May 2022
+Morissette, Hansen & Rodriguez	America/Ojinaga	6 June 2022;6 January 2022
+Rohan, Feest & D'Amore	America/Santiago	28 February 2022;26 December 2022
+Pharmaceutical Industries of Atlantic	Atlantic/Azores	6 January 2022;26 December 2022
+St Johns Steelworks	America/St_Johns	18 April 2022;7 March 2022
+Brand Enterprises of Pacific	Pacific/Guadalcanal	26 December 2022;18 April 2022
+Antarctica Medical Corporation	Antarctica/Davis	15 April 2022;3 May 2022
+Agriculture Corporation of Australia	Australia/Melbourne	26 January 2022;3 October 2022;18 April 2022
+Broadcasting Enterprises of Ashgabat	Asia/Ashgabat	1 November 2022;26 May 2022
+Troll Networks	Antarctica/Troll	3 May 2022;6 June 2022
+Thiel, Herman & Jones	Indian/Chagos	26 May 2022;18 April 2022
+Adams, Willms & Haag	Asia/Amman	6 January 2022;3 October 2022
+Dietrich Agriculture	Pacific/Fiji	26 May 2022;6 January 2022
+Deckow Press	Europe/Astrakhan	28 February 2022;3 January 2022
+Transport Universal of Romania	Europe/Bucharest	15 April 2022;3 October 2022;26 December 2022
+Palau Cosmetics	Pacific/Palau	6 June 2022;26 December 2022
+Bailey & Aufderhar	Asia/Colombo	1 November 2022;3 October 2022
+Graham, Kertzmann & Deckow	Asia/Damascus	6 June 2022;3 January 2022
+Luettgen Networks	Asia/Gaza	26 May 2022;3 January 2022
+Borer & Romaguera	Asia/Hong_Kong	15 April 2022;1 November 2022
+Transport Society of Israel	Asia/Jerusalem	7 March 2022;6 January 2022
+Kabul Interactive	Asia/Kabul	1 November 2022;18 April 2022;3 October 2022
+C&S	Asia/Tehran	3 May 2022;28 February 2022
+Australia Securities	Australia/Lindeman	18 April 2022;3 May 2022
+Investments of Ireland	Europe/Dublin	26 December 2022;26 May 2022
+Investment Group of Cabo Verde	Atlantic/Cape_Verde	26 May 2022;3 January 2022
+Wilderman & Lakin	Australia/Broken_Hill	6 January 2022;26 May 2022
+Property Management of Darwin	Australia/Darwin	6 January 2022;26 December 2022
+Mining Technologies of Australia	Australia/Eucla	3 January 2022;26 January 2022
+Gutmann Press Systems	Australia/Lord_Howe	26 December 2022;1 November 2022
+Tonga Investments	Pacific/Tongatapu	26 December 2022;26 May 2022;3 January 2022
+Powlowski & Morissette	Pacific/Auckland	6 June 2022;26 May 2022
+Health Enterprises of Pacific	Pacific/Chatham	6 June 2022;3 January 2022
+LSC Times	Pacific/Easter	3 May 2022;26 December 2022
+Nutrition Universal of Gambier	Pacific/Gambier	6 January 2022;28 February 2022;18 April 2022
+HQF Energy	Pacific/Honolulu	7 March 2022;3 October 2022
+Beer & Christiansen	Pacific/Kiritimati	1 November 2022;28 February 2022;26 May 2022
+R&O	Pacific/Marquesas	3 October 2022;6 January 2022
+Yost, Gislason & Schoen	Pacific/Niue	28 February 2022;26 December 2022
+Cartwright & DuBuque	Pacific/Norfolk	18 April 2022;3 January 2022
+Emard Press Universal	Pacific/Pitcairn	15 April 2022;18 April 2022
+QZW Health Enterprises	Africa/Abidjan	6 June 2022;6 January 2022
+Africa Press	Africa/Algiers	6 January 2022;3 October 2022
+Kling, Watsica & Wuckert	Africa/Windhoek	6 June 2022;15 April 2022;26 May 2022
+Press Industries of Europe	Europe/Gibraltar	6 June 2022;18 April 2022
+Graham, Moore & Jacobs-MacGyver	Europe/Simferopol	28 February 2022;15 April 2022
+Rau & Greenfelder	America/Nome	6 June 2022;4 July 2022
+Health Corporation of Brazil	America/Recife	3 January 2022;1 November 2022
+Medical Industries of Caribbean Netherlands	America/Puerto_Rico	3 May 2022;26 May 2022;3 October 2022
+Breitenberg Cosmetics Group	America/Managua	3 October 2022;6 June 2022
+Investment Bank of America	America/Guayaquil	3 October 2022;26 May 2022;6 June 2022
+United States of America Education Corporation	America/Denver	6 January 2022;26 May 2022
+Brakus, Maggio & Reichel	America/Indiana/Tell_City	5 September 2022;28 February 2022
+Wuckert Transport	America/Dawson_Creek	3 May 2022;6 June 2022
+Education Enterprises of Indiaa	America/Indiana/Vevay	3 October 2022;15 April 2022
+R&S	America/Noronha	18 April 2022;15 April 2022;26 May 2022
+GLT Information	Antarctica/Casey	3 October 2022;26 December 2022
+Sauer & Terry	Asia/Pontianak	26 May 2022;3 October 2022
+Bank of Antarctica	Antarctica/Macquarie	3 May 2022;6 June 2022
+Price & Jaskolski	Indian/Maldives	7 March 2022;1 November 2022
+HPP Networks	Antarctica/Vostok	15 April 2022;7 March 2022
+Investment Bank of Russia	Europe/Saratov	18 April 2022;28 February 2022
+Hauck & Hane	Europe/Sofia	1 November 2022;3 January 2022
+L&H	Asia/Khandyga	7 March 2022;18 April 2022;26 May 2022
+White, Walter & Glover-West	Asia/Hebron	26 December 2022;6 June 2022
+Perth Agriculture Institute	Australia/Perth	26 May 2022;26 January 2022
+Guam Recycling	Pacific/Guam	7 March 2022;3 October 2022
+YCD Fashion Society	Atlantic/Canary	18 April 2022;1 November 2022
+Recycling Society of Fakaofo	Pacific/Fakaofo	26 May 2022;6 June 2022
+AYV Nutrition Worldwide	Pacific/Tahiti	1 November 2022;28 February 2022
+Kassulke & Langworth	Pacific/Pago_Pago	6 June 2022;3 May 2022
+Macejkovic, Green & Keebler	Africa/Monrovia	15 April 2022;7 March 2022
+Ankunding Brand Industries	Africa/Khartoum	28 February 2022;3 May 2022
+Osinski, Turner & O'Reilly	Europe/Brussels	26 December 2022;18 April 2022
+Koss, Christiansen & Bogisich	Asia/Qatar	3 January 2022;1 November 2022
+Entertainment of United States of America	America/Metlakatla	7 March 2022;1 November 2022
