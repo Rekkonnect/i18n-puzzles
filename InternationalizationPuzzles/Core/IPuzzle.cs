@@ -22,7 +22,9 @@ public interface IPuzzle
     public abstract object Solve();
     public abstract void LoadInput(string fileInput);
 
-    public virtual async Task LoadInputFromStream(Stream stream)
+    public abstract Task LoadInputFromStream(Stream stream);
+
+    public sealed async Task LoadInputFromStreamDefault(Stream stream)
     {
         var reader = new StreamReader(stream);
         var fileInput = await reader.ReadToEndAsync();

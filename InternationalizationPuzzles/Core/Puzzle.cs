@@ -9,7 +9,7 @@ public abstract class Puzzle<T> : IPuzzle
 
     public virtual Task LoadInputFromStream(Stream stream)
     {
-        return ((IPuzzle)this).LoadInputFromStream(stream);
+        return ((IPuzzle)this).LoadInputFromStreamDefault(stream);
     }
 
     object IPuzzle.Solve()

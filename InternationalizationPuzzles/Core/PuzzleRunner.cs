@@ -22,13 +22,12 @@ public sealed class PuzzleRunner
         var inputStart = Stopwatch.GetTimestamp();
         var stream = File.OpenRead(fileName);
         await puzzle.LoadInputFromStream(stream);
-        // TODO: Use the input time
         var inputTime = Stopwatch.GetElapsedTime(inputStart);
 
         var solveStart = Stopwatch.GetTimestamp();
         var result = puzzle.Solve();
         var solveTime = Stopwatch.GetElapsedTime(solveStart);
 
-        return new(identifier, result, solveTime);
+        return new(identifier, result, inputTime, solveTime);
     }
 }

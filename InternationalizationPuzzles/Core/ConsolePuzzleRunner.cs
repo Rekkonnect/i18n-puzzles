@@ -57,7 +57,8 @@ public sealed class ConsolePuzzleRunner
     private static void WriteRunResult(PuzzleRunResult result)
     {
         AnsiConsole.MarkupLine($"""
-                Total time   {PrintExecutionTime(result.ExecutionTime)}
+                Input time   {PrintExecutionTime(result.InputTime)}
+                Solve time   {PrintExecutionTime(result.SolveTime)}
                     Result   [cyan]{result.Result}[/]
 
             """);
