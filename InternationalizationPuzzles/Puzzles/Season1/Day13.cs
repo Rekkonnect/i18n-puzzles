@@ -75,6 +75,8 @@ public sealed class Day13 : Puzzle<int>
         return new(wordLength, charIndex, knownChar);
     }
 
+    // TODO: Use HexByteParsing
+
     private static EncodedWord ParseEncodedWord(
         int lineNumber,
         SpanString line)

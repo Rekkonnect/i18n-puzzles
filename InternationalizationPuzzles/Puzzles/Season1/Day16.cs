@@ -20,12 +20,6 @@ public sealed class Day16 : Puzzle<int>
             "The puzzle was not solved");
     }
 
-    public override void LoadInput(string fileInput)
-    {
-        throw new NotSupportedException(
-            "The input must be loaded directly from a byte stream");
-    }
-
     public override async Task LoadInputFromStream(Stream stream)
     {
         var reader = new StreamReader(stream, _cp437);

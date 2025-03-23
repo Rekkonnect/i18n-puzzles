@@ -5,7 +5,11 @@ public abstract class Puzzle<T> : IPuzzle
 {
     public abstract T Solve();
 
-    public abstract void LoadInput(string fileInput);
+    public virtual void LoadInput(string fileInput)
+    {
+        throw new NotSupportedException(
+            "This implementation does not support loading from a string input.");
+    }
 
     public virtual Task LoadInputFromStream(Stream stream)
     {
