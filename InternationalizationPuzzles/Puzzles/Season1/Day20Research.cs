@@ -7,22 +7,17 @@ using System.Text;
 namespace InternationalizationPuzzles.Puzzles.Season1;
 
 // Complete working example of the process of decoding the input string
-// This acts on the test input string
 public static class Day20Research
 {
-    public static void Run()
+    public const string _testInput = """
+        //6y2+rcatqq3nvayN9q2qrebtqv3uLaqt5q2ojcP9mE3Craatws2frfxtmZ3uza+N4i2ijdLNj839rZ
+        Wt2n2KbcsttZ3CDbgd532sjfZdmz3TLab98m2rbdEtrv3mDaqt9q2q/e4tq63mraqt5/2o7catqq3mja
+        +N4G2mvfK9v839rZCt2Hm7LbWdzt2azeQ9rI32TZpd0i2m/f49qZ39rZWt5/24bcMtoJ3qXa/N7W2Ync
+        YNiq37Lbqtxq2rrea9rI32rart5q2qzeqgI=
+        """;
+
+    public static string Run(string input = _testInput)
     {
-        const string input = """
-            //6y2+rcatqq3nvayN9q2qrebtqv3uLaqt5q2ojcP9mE3Craatws2frfxtmZ3uza+N4i2ijdLNj839rZ
-            Wt2n2KbcsttZ3CDbgd532sjfZdmz3TLab98m2rbdEtrv3mDaqt9q2q/e4tq63mraqt5/2o7catqq3mja
-            +N4G2mvfK9v839rZCt2Hm7LbWdzt2azeQ9rI32TZpd0i2m/f49qZ39rZWt5/24bcMtoJ3qXa/N7W2Ync
-            YNiq37Lbqtxq2rrea9rI32rart5q2qzeqgI=
-            """;
-
-        const string target = """
-            ꪪꪪꪪ This is a secret message. ꪪꪪꪪ Good luck decoding me! ꪪꪪꪪ
-            """;
-
         AnsiConsole.MarkupLine("""
             [magenta]Beginning the deduction of the Day 20 puzzle[/]
             
@@ -52,7 +47,7 @@ public static class Day20Research
             [cyan]Bytes grouped by 2 chars[/]
             {HexByteStrings.ToHexDigitString(decoded, 2)}
             
-            [cyan]Bytes grouped by 2 chars[/]
+            [cyan]Bytes grouped by 3 chars[/]
             {HexByteStrings.ToHexDigitString(decoded, 3)}
             
             [cyan]Bytes grouped by 4 chars[/]
@@ -76,7 +71,7 @@ public static class Day20Research
             [cyan]Rune strings as full integer length[/]
             {string.Join(' ', runeStrings)}
             
-            [cyan]Rune strings as 20 bits[/]
+            [cyan]Rune strings as 20 bit integers[/]
             {string.Join(' ', runeStrings5Bytes)}
             
             [cyan]Complete rune string[/]
@@ -127,7 +122,7 @@ public static class Day20Research
                 return $"\r\n[darkgreen]110[/][green]{b.ToString("b8")[3..]}[/]";
             }
 
-            if (b is > 0b1000_0000 and < 0b1100_0000)
+            if (b >= 0b1000_0000)
             {
                 return $"[darkmagenta]10[/][magenta]{b.ToString("b8")[2..]}[/]";
             }
@@ -135,7 +130,7 @@ public static class Day20Research
             return b.ToString("b8");
         }
 
-        var utf8CodePointDecodableBytes = step3Bytes.AsSpan()[..^3];
+        var utf8CodePointDecodableBytes = step3Bytes.AsSpan();
         var utf8ExtendedCodePoints = ExtractCodePoints(utf8CodePointDecodableBytes);
         var utf8ExtendedCodePointsStrings = utf8ExtendedCodePoints.Select(s => $"{s:x8}");
         var utf8ExtendedCodePointsStrings7Bytes = utf8ExtendedCodePoints.Select(s => $"{s:x7}");
@@ -170,6 +165,13 @@ public static class Day20Research
             {finalString}
             
             """);
+
+        AnsiConsole.MarkupLine("""
+            
+            [green]You should have now solved the problem[/]
+            """);
+
+        return finalString;
 
         static ImmutableArray<int> ExtractCodePoints(ByteROS bytes)
         {

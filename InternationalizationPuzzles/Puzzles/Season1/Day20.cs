@@ -1,4 +1,6 @@
-﻿using Garyon.Extensions;
+﻿#define SOLVE_WITH_PRETTY_CONSOLE_OUTPUT
+
+using Garyon.Extensions;
 using InternationalizationPuzzles.Core;
 using InternationalizationPuzzles.Puzzles.Common;
 using System.Collections.Immutable;
@@ -11,6 +13,22 @@ public sealed class Day20 : Puzzle<string>
     private string _input = string.Empty;
 
     public override string Solve()
+    {
+#if SOLVE_WITH_PRETTY_CONSOLE_OUTPUT
+        return SolvePretty();
+#else
+        return SolveSilent();
+#endif
+    }
+
+#if SOLVE_WITH_PRETTY_CONSOLE_OUTPUT
+    private string SolvePretty()
+    {
+        return Day20Research.Run(_input);
+    }
+#endif
+
+    private string SolveSilent()
     {
         var decoded = DecodeBase64(_input);
         var runeString = GetUtf16RuneString(decoded);
