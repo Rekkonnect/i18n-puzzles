@@ -1,6 +1,4 @@
-﻿#undef PLAYGROUND
-
-#if PLAYGROUND
+﻿#if PLAYGROUND
 
 // Because writing code in SharpLab is shit, regardless of the convenience
 // of the Run tab
@@ -13,9 +11,10 @@ Playground.Run();
 
 using Garyon.Objects;
 using InternationalizationPuzzles.Core;
+using InternationalizationPuzzles.Puzzles.Season1;
 
 var runner = Singleton<ConsolePuzzleRunner>.Instance;
 
-await runner.ValidateToday();
+await runner.DiscoverAllValidate<Day20>();
 
 #endif

@@ -119,6 +119,8 @@ public sealed class Day13 : Puzzle<int>
         return -1;
     }
 
+    // TODO: Use HexByteStrings
+
     private static char HexDigitChar(int digit)
     {
         if (digit >= 10)

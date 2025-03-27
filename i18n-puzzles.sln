@@ -15,15 +15,20 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Playground|Any CPU = Playground|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3EF54847-3310-4D9D-97CC-136D4990BE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3EF54847-3310-4D9D-97CC-136D4990BE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EF54847-3310-4D9D-97CC-136D4990BE50}.Playground|Any CPU.ActiveCfg = Playground|Any CPU
+		{3EF54847-3310-4D9D-97CC-136D4990BE50}.Playground|Any CPU.Build.0 = Playground|Any CPU
 		{3EF54847-3310-4D9D-97CC-136D4990BE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EF54847-3310-4D9D-97CC-136D4990BE50}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C77EA779-06A6-4982-97AC-B0B20EA8EB0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C77EA779-06A6-4982-97AC-B0B20EA8EB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C77EA779-06A6-4982-97AC-B0B20EA8EB0F}.Playground|Any CPU.ActiveCfg = Playground|Any CPU
+		{C77EA779-06A6-4982-97AC-B0B20EA8EB0F}.Playground|Any CPU.Build.0 = Playground|Any CPU
 		{C77EA779-06A6-4982-97AC-B0B20EA8EB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C77EA779-06A6-4982-97AC-B0B20EA8EB0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

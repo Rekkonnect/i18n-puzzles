@@ -44,7 +44,7 @@ public static class HexByteParsing
         Span<byte> outBytes)
     {
         int byteCount = line.Length / CharsPerByte;
-        for (int i = 0; i < line.Length; i += CharsPerByte)
+        for (int i = 0; i <= line.Length - CharsPerByte; i += CharsPerByte)
         {
             var chars = line.Slice(i, CharsPerByte);
             char left = chars[0];
